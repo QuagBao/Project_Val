@@ -19,7 +19,7 @@ function Card() {
 				</div>
 				<Image
 					className="w-[280px] h-[450px] aspect-video object-cover rounded-md drop-shadow-custom"
-					src="/img/Viper.png"
+					src="/img/agents/Viper.png"
 					width={280}
 					height={450}
 					alt=""
