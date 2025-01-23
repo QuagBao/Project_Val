@@ -11,6 +11,10 @@ export default {
 			colors: {
 				background: 'var(--background)',
 				foreground: 'var(--foreground)',
+				custom: '#13395D',
+			},
+			dropShadow: {
+				custom: '0px 0px 10px rgba(0, 0, 0, 0.5)',
 			},
 			backgroundImage: {
 				'home-pattern': "url('/img/valorant.jpg')",
