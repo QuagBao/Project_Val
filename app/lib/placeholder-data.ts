@@ -144,4 +144,152 @@ const agents = [
 	},
 ]
 
-export { agents, roles }
+const typeOfGuns = [
+	{
+		id: '1',
+		name: 'machine guns',
+	},
+	{
+		id: '2',
+		name: 'melee',
+	},
+	{
+		id: '3',
+		name: 'rifles',
+	},
+	{
+		id: '4',
+		name: 'shotguns',
+	},
+	{
+		id: '5',
+		name: 'sidearms',
+	},
+	{
+		id: '6',
+		name: 'smgs',
+	},
+	{
+		id: '7',
+		name: 'sniper rifles',
+	},
+]
+
+const guns = [
+	{
+		id: '1',
+		type_of_gun_id: '1',
+		name: 'Ares',
+		image_url: '/img/guns/machine guns/Ares.png',
+	},
+	{
+		id: '2',
+		type_of_gun_id: '1',
+		name: 'Odin',
+		image_url: '/img/guns/machine guns/Odin.png',
+	},
+	{
+		id: '3',
+		type_of_gun_id: '2',
+		name: 'Melee',
+		image_url: '/img/guns/melee/Melee.png',
+	},
+	{
+		id: '4',
+		type_of_gun_id: '3',
+		name: 'Bulldog',
+		image_url: '/img/guns/rifles/Bulldog.png',
+	},
+	{
+		id: '5',
+		type_of_gun_id: '3',
+		name: 'Guardian',
+		image_url: '/img/guns/rifles/Guardian.png',
+	},
+	{
+		id: '6',
+		type_of_gun_id: '3',
+		name: 'Phantom',
+		image_url: '/img/guns/rifles/Phantom.png',
+	},
+	{
+		id: '7',
+		type_of_gun_id: '3',
+		name: 'Vandal',
+		image_url: '/img/guns/rifles/Vandal.png',
+	},
+	{
+		id: '8',
+		type_of_gun_id: '4',
+		name: 'Bucky',
+		image_url: '/img/guns/shotguns/Bucky.png',
+	},
+	{
+		id: '9',
+		type_of_gun_id: '4',
+		name: 'Judge',
+		image_url: '/img/guns/shotguns/Judge.png',
+	},
+	{
+		id: '10',
+		type_of_gun_id: '5',
+		name: 'Classic',
+		image_url: '/img/guns/sidearms/Classic.png',
+	},
+	{
+		id: '11',
+		type_of_gun_id: '5',
+		name: 'Frenzy',
+		image_url: '/img/guns/sidearms/Frenzy.png',
+	},
+	{
+		id: '12',
+		type_of_gun_id: '5',
+		name: 'Ghost',
+		image_url: '/img/guns/sidearms/Ghost.png',
+	},
+	{
+		id: '13',
+		type_of_gun_id: '5',
+		name: 'Sheriff',
+		image_url: '/img/guns/sidearms/Sheriff.png',
+	},
+	{
+		id: '14',
+		type_of_gun_id: '5',
+		name: 'Shorty',
+		image_url: '/img/guns/sidearms/Shorty.png',
+	},
+	{
+		id: '15',
+		type_of_gun_id: '6',
+		name: 'Spectre',
+		image_url: '/img/guns/smgs/Spectre.png',
+	},
+	{
+		id: '16',
+		type_of_gun_id: '6',
+		name: 'Stinger',
+		image_url: '/img/guns/smgs/Stinger.png',
+	},
+	{
+		id: '17',
+		type_of_gun_id: '7',
+		name: 'Marshal',
+		image_url: '/img/guns/sniper rifles/Marshal.png',
+	},
+	{
+		id: '18',
+		type_of_gun_id: '7',
+		name: 'Operator',
+		image_url: '/img/guns/sniper rifles/Operator.png',
+	},
+	{
+		id: '19',
+		type_of_gun_id: '7',
+		name: 'Outlaw',
+		image_url: '/img/guns/sniper rifles/Outlaw.png',
+	},
+]
+
+export { agents, roles, typeOfGuns, guns }

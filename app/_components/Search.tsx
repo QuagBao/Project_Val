@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 function Search() {
 	return (
-		<div className="w-1/2 flex gap-1 bg-slate-100 p-2 rounded">
+		<div className="w-full flex gap-1 bg-slate-100 p-2 rounded">
 			<div className="border-r-2 border-slate-500 ">
 				<Link href={'/'} className="text-slate-500">
 					<svg
@@ -23,7 +23,7 @@ function Search() {
 			</div>
 
 			<input
-				className="w-screen bg-transparent px-2
+				className="w-full bg-transparent px-2
 				border focus:border-slate-500 outline-none
 				rounded text-slate-500"
 				type="text"

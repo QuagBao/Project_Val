@@ -6,9 +6,9 @@ const OPTIONS: EmblaOptionsType = { loop: true }
 
 export default async function page() {
 	const agents = await fetchAgents()
-	console.log('Agents: ' + JSON.stringify(agents))
+
 	return (
-		<div className="h-full w-full flex flex-col items-center gap-5">
+		<div className="h-full w-screen flex flex-col justify-center items-center gap-5">
 			<EmblaCarousel slides={agents} options={OPTIONS} />
 		</div>
 	)

@@ -1,16 +1,20 @@
 import EmblaCarousel from '../shared/EmblaCarousel'
 import { EmblaOptionsType } from 'embla-carousel'
+import { fetchGuns } from '@/app/lib/data'
 
-function page() {
-	const OPTIONS: EmblaOptionsType = { loop: true }
-	const SLIDE_COUNT = 20
-	const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
+const OPTIONS: EmblaOptionsType = { loop: true }
+export default async function page() {
+	const gunsData = await fetchGuns()
+
+	const formattedGuns = gunsData.map((gun) => ({
+		id: gun.id,
+		name: gun.name,
+		image_url: gun.image_url,
+	}))
 
 	return (
 		<div className="flex flex-col items-center">
-			<EmblaCarousel slides={SLIDES} options={OPTIONS} />
+			<EmblaCarousel slides={formattedGuns} options={OPTIONS} />
 		</div>
 	)
 }
-
-export default page

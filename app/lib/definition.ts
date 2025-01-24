@@ -1,5 +1,11 @@
+export type typeOfGun = {
+	id: string
+	name: string
+}
+
 export type Gun = {
 	id: string
+	type_of_gun_id: string
 	name: string
 	description: string
 	image_url: string

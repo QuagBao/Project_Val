@@ -14,24 +14,25 @@ export default function NavLinks() {
 	const pathName = usePathname()
 	console.log('Path Name: ' + pathName)
 	return (
-		<div
+		<nav
 			className="h-full w-screen max-w-screen 
-		bg-[#657899] flex justify-around items-center px-5 "
+		bg-[#657899] flex justify-around items-center ms-auto"
 		>
-			<div className="flex gap-14 justify-center items-center">
+			<div className="w-1/5"></div>
+			<div className="flex gap-5 justify-center items-center">
 				{links.map((button) => (
 					<Link
 						key={button.name}
 						href={button.href}
 						className={clsx(
-							'px-8 py-3 min-w-[120px] hover:border-double hover:border-4 hover:border-slate-100 rounded-sm text-md text-center text-slate-50 font-semibold cursor-pointer',
+							'px-8 py-3 hover:bg-sky-500 rounded-sm text-md text-center text-slate-50 font-semibold cursor-pointer',
 							{
 								'bg-sky-200': pathName === button.href,
 							}
 						)}
 					>
 						<p
-							className={clsx('hidden md:block', {
+							className={clsx('', {
 								'text-custom': pathName === button.href,
 							})}
 						>
@@ -40,7 +41,9 @@ export default function NavLinks() {
 					</Link>
 				))}
 			</div>
+			<div className="w-1/5"></div>
 			<Search />
-		</div>
+			<div className="w-1/5"></div>
+		</nav>
 	)
 }
