@@ -4,6 +4,7 @@ import { agents, roles, typeOfGuns, guns } from '../lib/placeholder-data'
 const client = await db.connect()
 
 async function seedRoles() {
+	await client.sql`DROP TABLE IF EXISTS guns CASCADE;`
 	await client.sql`
     CREATE TABLE IF NOT EXISTS roles (
       id SERIAL PRIMARY KEY,
