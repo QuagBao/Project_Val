@@ -24,13 +24,19 @@ export default function NavLinks() {
 						key={button.name}
 						href={button.href}
 						className={clsx(
-							'px-8 py-3 min-w-[120px] hover:border-double hover:border-4 hover:border-slate-100 rounded-sm text-md text-center text-custom font-semibold cursor-pointer',
+							'px-8 py-3 min-w-[120px] hover:border-double hover:border-4 hover:border-slate-100 rounded-sm text-md text-center text-slate-50 font-semibold cursor-pointer',
 							{
 								'bg-sky-200': pathName === button.href,
 							}
 						)}
 					>
-						<p className="hidden md:block">{button.name}</p>
+						<p
+							className={clsx('hidden md:block', {
+								'text-custom': pathName === button.href,
+							})}
+						>
+							{button.name}
+						</p>
 					</Link>
 				))}
 			</div>

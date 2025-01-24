@@ -10,12 +10,18 @@ import {
 } from './EmblaCarouselArrowButtons'
 import Card from '../_components/Card'
 
-type PropType = {
-	slides: number[]
+type listObject = {
+	id: string
+	name: string
+	image_url: string
+}
+
+type propType = {
+	slides: listObject[]
 	options?: EmblaOptionsType
 }
 
-const EmblaCarousel: React.FC<PropType> = (props) => {
+const EmblaCarousel: React.FC<propType> = (props) => {
 	const { slides, options } = props
 	const [emblaRef, emblaApi] = useEmblaCarousel(options, [
 		Autoplay({ playOnInit: true, delay: 3000 }),
@@ -32,13 +38,17 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 		<div className="embla max-w-6xl mx-auto">
 			<div className="embla__viewport overflow-hidden" ref={emblaRef}>
 				<div className="embla__container flex touch-pan-y touch-pinch-zoom -ml-4">
-					{slides.map((index) => (
+					{slides.map((agent) => (
 						<div
-							key={index}
+							key={agent.id}
 							className="embla__slide transform translate-x-0 translate-y-0 translate-z-0 flex-[0_0_50%] min-w-0 pl-4"
 						>
 							<div className="embla__slide__number rounded-md text-2xl font-semibold flex items-center justify-center h-76 select-none">
-								<Card />
+								<Card
+									id={agent.id}
+									name={agent.name}
+									img_Url={agent.image_url}
+								/>
 							</div>
 						</div>
 					))}

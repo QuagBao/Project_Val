@@ -1,6 +1,13 @@
 import Button from '../../_components/Button'
 import Image from 'next/image'
-function Card() {
+
+type cardProps = {
+	id: string
+	name: string
+	img_Url: string
+}
+
+function Card({ id, name, img_Url }: cardProps) {
 	return (
 		<div
 			className="card bg-slate-700 
@@ -14,18 +21,18 @@ function Card() {
 				absolute top-10 tracking-wide w-full rotate-90 right-2
 				[--tw-text-stroke:2px_black] [text-shadow:_1px_4px_6px_rgba(19,53,123,0.8)] "
 					>
-						Viper
+						{name}
 					</h1>
 				</div>
 				<Image
-					className="w-[280px] h-[450px] aspect-video object-cover rounded-md drop-shadow-custom"
-					src="/img/agents/Viper.png"
-					width={280}
-					height={450}
+					className="w-[280px] h-[450px] aspect-square object-contain	 rounded-md drop-shadow-custom"
+					src={img_Url}
+					width={300}
+					height={500}
 					alt=""
 				/>
 			</div>
-			<Button name="Details" id={''} />
+			<Button name="Details" id={id} />
 			<div></div>
 		</div>
 	)
