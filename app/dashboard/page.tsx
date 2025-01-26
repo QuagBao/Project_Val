@@ -1,15 +1,13 @@
-import EmblaCarousel from './shared/EmblaCarousel'
-import { EmblaOptionsType } from 'embla-carousel'
-import { fetchAgents } from '../lib/data'
-
-const OPTIONS: EmblaOptionsType = { loop: true }
-
 export default async function page() {
-	const agents = await fetchAgents()
-
 	return (
-		<div className="h-full w-screen flex flex-col justify-center items-center gap-5">
-			<EmblaCarousel slides={agents} options={OPTIONS} />
+		<div className="h-full w-screen flex flex-col items-center gap-5 rounded-sm">
+			<video
+				autoPlay
+				loop
+				playsInline
+				className="object-contain rounded-md drop-shadow-custom aspect-video max-h-[550px]"
+				src="/vid/Dashboard1.mp4"
+			></video>
 		</div>
 	)
 }

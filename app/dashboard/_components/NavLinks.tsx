@@ -6,8 +6,9 @@ import clsx from 'clsx'
 
 const links = [
 	{ name: 'Home', href: '/dashboard', id: 0 },
-	{ name: 'Roles', href: '/dashboard/roles', id: 1 },
-	{ name: 'Guns', href: '/dashboard/guns', id: 2 },
+	{ name: 'Agents', href: '/dashboard/agents', id: 1 },
+	{ name: 'Roles', href: '/dashboard/roles', id: 2 },
+	{ name: 'Guns', href: '/dashboard/guns', id: 3 },
 ]
 
 export default function NavLinks() {
