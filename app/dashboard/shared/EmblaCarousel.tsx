@@ -13,7 +13,7 @@ import Card from '../_components/Card'
 type listObject = {
 	id: string
 	name: string
-	image_url: string
+	agent_url: string
 }
 
 type propType = {
@@ -34,6 +34,7 @@ const EmblaCarousel: React.FC<propType> = (props) => {
 		onNextButtonClick,
 	} = usePrevNextButtons(emblaApi)
 
+	console.log('Img Url: ' + slides[0].agent_url)
 	return (
 		<div className="embla w-screen flex flex-col items-center ">
 			<div
@@ -50,7 +51,7 @@ const EmblaCarousel: React.FC<propType> = (props) => {
 								<Card
 									id={agent.id}
 									name={agent.name}
-									img_Url={agent.image_url}
+									img_Url={agent.agent_url}
 								/>
 							</div>
 						</div>

@@ -8,7 +8,7 @@ export type Gun = {
 	type_of_gun_id: string
 	name: string
 	description: string
-	image_url: string
+	gun_url: string
 	cost: number
 }
 
@@ -16,7 +16,7 @@ export type Role = {
 	id: string
 	role_name: string
 	description: string
-	image_url: string
+	role_url: string
 }
 
 export type Agent = {
@@ -24,6 +24,12 @@ export type Agent = {
 	role_id: string
 	gun_ids: string
 	name: string
+	overview: string
 	description: string
-	image_url: string
+	agent_url: string
+}
+
+export type AgentDetail = Agent & {
+	role_name: string
+	role_url: string
 }

@@ -9,7 +9,7 @@ export default async function page() {
 	const formattedGuns = gunsData.map((gun) => ({
 		id: gun.id,
 		name: gun.name,
-		image_url: gun.image_url,
+		agent_url: gun.gun_url,
 	}))
 
 	return (

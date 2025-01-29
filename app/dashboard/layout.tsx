@@ -7,14 +7,14 @@ export default function DashBoardLayout({
 }) {
 	return (
 		<div
-			className="grid grid-row-[80px_1fr_100px] gap-10 justify-center 
+			className="grid grid-rows-[80px_auto] gap-10
 			overflow-x-hidden overflow-y-auto 
-			min-w-screen max-w-screen h-screen max-h-screen bg-red-500"
+			w-screen h-screen max-h-screen bg-red-500"
 		>
-			<header className="w-screen h-[80px]">
+			<header className="w-screen">
 				<NavLinks />
 			</header>
-			<main>
+			<main className="flex flex-col gap-2 items-center justify-center">
 				<div>{children}</div>
 			</main>
 		</div>

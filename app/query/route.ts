@@ -3,7 +3,7 @@ import { db } from '@vercel/postgres'
 const client = await db.connect()
 
 async function listAgents() {
-	const data = await client.sql`SELECT * FROM roles;`
+	const data = await client.sql`SELECT * FROM agents;`
 	return data.rows
 }
 

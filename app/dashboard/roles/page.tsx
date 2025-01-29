@@ -5,12 +5,13 @@ import { fetchRoles } from '@/app/lib/data'
 const OPTIONS: EmblaOptionsType = { loop: true }
 export default async function page() {
 	const rolesData = await fetchRoles()
-
+	console.log('Roles: ', rolesData)
 	const formattedRoles = rolesData.map((role) => ({
 		id: role.id,
 		name: role.role_name,
-		image_url: role.image_url,
+		agent_url: role.role_url,
 	}))
+	console.log('Formatted Roles: ', formattedRoles)
 
 	return (
 		<div className="flex flex-col items-center">

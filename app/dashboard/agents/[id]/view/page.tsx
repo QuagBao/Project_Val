@@ -1,14 +1,17 @@
-'use client'
-import { useParams } from 'next/navigation'
+import BoardInfo from '@/app/_components/BoardInfo'
+import { fetchDetailAgentByID } from '@/app/lib/data'
 
-export default function AgentDetail() {
-	const params = useParams()
-	const { id } = params
+export default async function Page({ params }: { params: { id: string } }) {
+	const id = params.id
+	const data = await fetchDetailAgentByID(id)
+
+	if (!data) {
+		return <p className="text-slate-500">Agent {id} not found</p>
+	}
 
 	return (
 		<div className="flex flex-col items-center justify-center h-screen">
-			<h1 className="text-4xl text-white">Agent Details</h1>
-			<p className="text-2xl mt-5 text-gray-300">Agent ID: {id}</p>
+			<BoardInfo data={data} />
 		</div>
 	)
 }

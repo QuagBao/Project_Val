@@ -9,9 +9,9 @@ interface ButtonProps {
 function Button({ id, name }: ButtonProps) {
 	const pathName = usePathname()
 	const getLinkPath = () => {
-		if (pathName === '/dashboard') return `/dashboard/agents/view/${id}`
-		if (pathName === '/dashboard/guns') return `/dashboard/guns/view/${id}`
-		if (pathName === '/dashboard/roles') return `/dashboard/roles/view/${id}`
+		if (pathName === '/dashboard/agents') return `/dashboard/agents/${id}/view`
+		if (pathName === '/dashboard/guns') return `/dashboard/guns/${id}/view`
+		if (pathName === '/dashboard/roles') return `/dashboard/roles/${id}/view`
 		return '/'
 	}
 	return (
