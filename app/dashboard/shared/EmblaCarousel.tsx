@@ -9,6 +9,7 @@ import {
 	usePrevNextButtons,
 } from './EmblaCarouselArrowButtons'
 import Card from '../_components/Card'
+import { Create } from '@/app/_components/Buttons'
 
 type listObject = {
 	id: string
@@ -36,7 +37,7 @@ const EmblaCarousel: React.FC<propType> = (props) => {
 
 	console.log('Img Url: ' + slides[0].agent_url)
 	return (
-		<div className="embla w-screen flex flex-col items-center ">
+		<div className="embla w-screen flex flex-col items-center gap-5 ">
 			<div
 				className="embla__viewport min-w-screen max-w-6xl overflow-hidden"
 				ref={emblaRef}
@@ -58,8 +59,10 @@ const EmblaCarousel: React.FC<propType> = (props) => {
 					))}
 				</div>
 			</div>
-
-			<div className="embla__controls mt-3 mb-7">
+			<div className="flex justify-end">
+				<Create />
+			</div>
+			<div className="embla__controls mb-7">
 				<div className="embla__buttons grid grid-cols-2 gap-2 items-center">
 					<PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
 					<NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />

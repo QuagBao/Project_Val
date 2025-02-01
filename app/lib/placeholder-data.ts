@@ -37,8 +37,9 @@ const agents = [
 		name: 'Breach',
 		role_id: '3',
 		agent_url: '/img/agents/Breach.png',
-		overview:
-			"Breach is a VALORANT agent to whom walls are no obstacle. Breach's kit is designed to inflict damage and crowd control through walls and terrain, taking people out of cover or aiding his team's peaking. Flashpoint is a fast-acting burst that blinds enemies, while Aftershock does damage while also dazing all players in the area of effect. If that's not enough, Breach's ultimate, Rolling Thunder, is an ability that passes through all terrain in a cone, knocking up and dazing players. Good Breach players will find clever ways to ambush the enemies without even being seen. Teaming up with Sova to learn enemies' positioning is a deadly combination that can catch the enemy team completely off-guard.",
+		overview: `Breach is a VALORANT agent to whom walls are no obstacle. Breach's kit is designed to inflict damage and crowd control through walls and terrain, taking people out of cover or aiding his team's peaking. Flashpoint is a fast-acting burst that blinds enemies, while Aftershock does damage while also dazing all players in the area of effect. If that's not enough, Breach's ultimate, Rolling Thunder, is an ability that passes through all terrain in a cone, knocking up and dazing players.
+
+Good Breach players will find clever ways to ambush the enemies without even being seen. Teaming up with Sova to learn enemies' positioning is a deadly combination that can catch the enemy team completely off-guard.`,
 		description:
 			'Breach, the bionic Swede, fires powerful, targeted kinetic blasts to aggressively clear a path through enemy ground. The damage and disruption he inflicts ensures no fight is ever fair.',
 	},
@@ -77,8 +78,9 @@ const agents = [
 		name: 'Cypher',
 		role_id: '4',
 		agent_url: '/img/agents/Cypher.png',
-		overview:
-			"Cypher is a VALORANT agent who is the embodiment of the spy and infiltrator archetype. Cypher relies on ambushing enemies with various traps, which daze, restrain, and slow enemies in their range. Cypher is also skilled in gathering information about the battlefield, using Spycam's to monitor enemy team movements or extracting information from dead enemies to reveal the location of their allies. Skilled Cypher players will have intimate knowledge of VALORANT maps to know the best places to set traps and Spycams, crippling the enemy team while staying hidden in the shadows.",
+		overview: `Cypher is a VALORANT agent who is the embodiment of the spy and infiltrator archetype. Cypher relies on ambushing enemies with various traps, which daze, restrain, and slow enemies in their range.
+
+Cypher is also skilled in gathering information about the battlefield, using Spycam's to monitor enemy team movements or extracting information from dead enemies to reveal the location of their allies. Skilled Cypher players will have intimate knowledge of VALORANT maps to know the best places to set traps and Spycams, crippling the enemy team while staying hidden in the shadows.`,
 		description:
 			'The Moroccan information broker, Cypher is a one-man surveillance network who keeps tabs on the enemy’s every move. No secret is safe. No maneuver goes unseen. Cypher is always watching.',
 	},
@@ -137,8 +139,9 @@ const agents = [
 		name: 'Killjoy',
 		role_id: '4',
 		agent_url: '/img/agents/Killjoy.png',
-		overview:
-			"Killjoy is а VALORANT agent that specializes in crowd control through gadgets, bots, and marvels of engineering. Alarmbot and Nanoswarm allow Killjoy to deploy tools that seek out and damage targets or explode to deal damage from a covert state. Her Turret, on the other hand, can be placed at a critical area on the map, such as Spike plant sites, behind corners, or other strategical positions to deal damage to enemies in its range. Killjoy's ultimate, Lockdown, is another impressive device, which triggers after a period of windup to ensnare enemies caught in its radius, providing powerful, team-wide crowd control. Expert Killjoy players will heavily rely on her abilities as opposed to raw firepower to gain advantage on the map.",
+		overview: `Killjoy is а VALORANT agent that specializes in crowd control through gadgets, bots, and marvels of engineering. Alarmbot and Nanoswarm allow Killjoy to deploy tools that seek out and damage targets or explode to deal damage from a covert state. Her Turret, on the other hand, can be placed at a critical area on the map, such as Spike plant sites, behind corners, or other strategical positions to deal damage to enemies in its range.
+
+Killjoy's ultimate, Lockdown, is another impressive device, which triggers after a period of windup to ensnare enemies caught in its radius, providing powerful, team-wide crowd control. Expert Killjoy players will heavily rely on her abilities as opposed to raw firepower to gain advantage on the map.`,
 		description:
 			"The genius of Germany, Killjoy secures the battlefield with ease using her arsenal of inventions. If the damage from her gear doesn't stop her enemies, her robots debuff will help make short work of them.",
 	},
@@ -177,8 +180,9 @@ const agents = [
 		name: 'Raze',
 		role_id: '2',
 		agent_url: '/img/agents/Raze.png',
-		overview:
-			"Raze is a VALORANT agent, whose skill kit is centered around mines, grenades, and general explosions. Raze is all about dealing AOE damage to enemies and will become a favorite agent for those players who like chaos and mayhem. Blast Pack and Boom Bot are Raze's main abilities, with which she melts the opposing team. Blast Pack can stick to walls and be detonated on command, while Boom Bot is an auto-lock Bot that chases enemies and explodes if it catches up to them, making it great to putting pressure to opponents while can give a great amount of damage if triggered. Raze's signature ability, Paint Shells is a more direct damage grenade-throw, in which after thrown and explodes, splits into 4 smaller grenades that also deals great damage, making it a great space-maker of a skill. And if someone lives after encountering Raze on the battlefield, the Showstopper ultimate does just that — it ends everyone's life.",
+		overview: `Raze is a VALORANT agent, whose skill kit is centered around mines, grenades, and general explosions. Raze is all about dealing AOE damage to enemies and will become a favorite agent for those players who like chaos and mayhem.
+
+Blast Pack and Boom Bot are Raze's main abilities, with which she melts the opposing team. Blast Pack can stick to walls and be detonated on command, while Boom Bot is an auto-lock Bot that chases enemies and explodes if it catches up to them, making it great to putting pressure to opponents while can give a great amount of damage if triggered. Raze's signature ability, Paint Shells is a more direct damage grenade-throw, in which after thrown and explodes, splits into 4 smaller grenades that also deals great damage, making it a great space-maker of a skill. And if someone lives after encountering Raze on the battlefield, the Showstopper ultimate does just that — it ends everyone's life.`,
 		description:
 			'Raze explodes out of Brazil with her big personality and big guns. With her blunt-force-trauma playstyle, she excels at flushing entrenched enemies and clearing tight spaces with a generous dose of “boom”.',
 	},
@@ -187,8 +191,9 @@ const agents = [
 		name: 'Reyna',
 		role_id: '2',
 		agent_url: '/img/agents/Reyna.png',
-		overview:
-			"Reyna is a VALORANT agent with an aggressive, duel-centric playstyle. Reyna's unique mechanic are the so-called Soul Orbs, which drop when she kills an opponent and which, upon consumption, give her various bonuses — from massive healing to invisibility. Reyna's ultimate ability is Empress, which turns her into a rapid-fire death machine, dramatically increasing all her combat stats. Every kill renews Empress' duration, and a skilled Reyna player can wipe away the entire team in one swift offense.",
+		overview: `Reyna is a VALORANT agent with an aggressive, duel-centric playstyle. Reyna's unique mechanic are the so-called Soul Orbs, which drop when she kills an opponent and which, upon consumption, give her various bonuses — from massive healing to invisibility.
+
+Reyna's ultimate ability is Empress, which turns her into a rapid-fire death machine, dramatically increasing all her combat stats. Every kill renews Empress' duration, and a skilled Reyna player can wipe away the entire team in one swift offense.`,
 		description:
 			'Forged in the heart of Mexico, Reyna dominates single combat, popping off with each kill she scores. Her capability is only limited by her raw skill, making her highly dependent on performance.',
 	},

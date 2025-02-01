@@ -11,9 +11,9 @@
 }
 
 ::-webkit-scrollbar-thumb {
-	@apply bg-[#dff1ff] rounded-none;
+	@apply bg-[#dff1ff] rounded-md;
 }
 
 ::-webkit-scrollbar-track {
-	@apply bg-[#657899] rounded-none;
+	@apply bg-[#657899] rounded-md;
 }

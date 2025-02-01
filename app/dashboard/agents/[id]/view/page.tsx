@@ -1,9 +1,10 @@
 import BoardInfo from '@/app/_components/BoardInfo'
 import { fetchDetailAgentByID } from '@/app/lib/data'
 
-export default async function Page({ params }: { params: { id: string } }) {
-	const id = params.id
-	const data = await fetchDetailAgentByID(id)
+export default async function Page(props: { params: Promise<{ id: string }> }) {
+	const param = await props.params
+	const id = param.id
+	const [data] = await Promise.all([fetchDetailAgentByID(id)])
 
 	if (!data) {
 		return <p className="text-slate-500">Agent {id} not found</p>

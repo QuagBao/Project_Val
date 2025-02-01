@@ -8,9 +8,9 @@ interface imgProps {
 
 function Image({ src, alt }: imgProps) {
 	return (
-		<div className="bg-slate-600 rounded-xl drop-shadow-custom">
+		<div className=" rounded-xl drop-shadow-custom">
 			<img
-				className="w-full border-2 border-gray-300 rounded-xl p-2 h-[500px] 
+				className="w-full bg-slate-600 border-2 border-gray-300 rounded-xl p-2 h-[600px] 
 				object-contain
 				drop-shadow-custom"
 				src={src}

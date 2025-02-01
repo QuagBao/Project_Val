@@ -1,4 +1,4 @@
-import Button from '../../_components/Button'
+import Button from '../../_components/DetailsButton'
 import Image from 'next/image'
 
 type cardProps = {
