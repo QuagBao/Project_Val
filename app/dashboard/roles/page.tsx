@@ -7,7 +7,7 @@ export default async function page() {
 	const rolesData = await fetchRoles()
 	console.log('Roles: ', rolesData)
 	const formattedRoles = rolesData.map((role) => ({
-		id: role.id,
+		id: Number(role.id),
 		name: role.role_name,
 		agent_url: role.role_url,
 	}))

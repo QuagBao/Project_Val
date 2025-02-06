@@ -7,7 +7,7 @@ export default async function page() {
 	const gunsData = await fetchGuns()
 
 	const formattedGuns = gunsData.map((gun) => ({
-		id: gun.id,
+		id: Number(gun.id),
 		name: gun.name,
 		agent_url: gun.gun_url,
 	}))
