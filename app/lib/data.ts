@@ -2,7 +2,7 @@ import { sql } from '@vercel/postgres'
 import { Agent, Role, Gun, AgentDetail } from './definition'
 
 export async function fetchAgents(): Promise<Agent[]> {
-	const result = await sql<Agent>`SELECT * FROM agents;`
+	const result = await sql<Agent>`SELECT * FROM agents ORDER BY id ASC;`
 	return result.rows
 }
 
@@ -27,6 +27,36 @@ export async function fetchDetailAgentByID(
 			WHERE agents.id = ${id};
 		`
 		return data.rows[0] ?? null
+	} catch (error) {
+		console.error('Error fetching agent:', error)
+		throw new Error('Failed to fetch agent details')
+	}
+}
+
+export async function fetchDetailRoleById(id: number): Promise<Role | null> {
+	try {
+		const data = await sql<Role>`
+			SELECT roles.*
+			FROM roles
+			WHERE roles.id = ${id};
+		`
+		return data.rows[0] ?? null
+	} catch (error) {
+		console.error('Error fetching agent:', error)
+		throw new Error('Failed to fetch agent details')
+	}
+}
+
+export async function fetchAgentsByRole(id: number): Promise<Agent[] | null> {
+	try {
+		const data = await sql<Agent>`
+			SELECT roles.*, agents.role_id, agents.agent_url, agents.id, agents.name
+			FROM roles
+			JOIN agents ON roles.id = agents.role_id
+			WHERE roles.id = ${id}
+			ORDER BY agents.id ASC;
+		`
+		return data.rows ?? null
 	} catch (error) {
 		console.error('Error fetching agent:', error)
 		throw new Error('Failed to fetch agent details')

@@ -1,4 +1,4 @@
-import { Back, DeleteAgent, EditAgent } from './Buttons'
+import { Back, DeleteAgent, Edit } from './Buttons'
 import Img from './Img'
 
 interface dataBoardInfo {
@@ -14,12 +14,12 @@ interface dataBoardInfo {
 export default function BoardInfo({ data }: { data: dataBoardInfo }) {
 	return (
 		<div>
-			<section className="grid grid-cols-[700px_350px] mt-20 px-14 gap-x-5">
+			<section className="grid grid-cols-[700px_350px] px-14 gap-x-5">
 				<div>
 					<Back id={data.id} />
 				</div>
 				<div className="flex justify-around">
-					<EditAgent id={data.id} />
+					<Edit id={data.id} />
 					<DeleteAgent id={data.id} />
 				</div>
 			</section>

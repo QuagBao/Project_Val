@@ -10,6 +10,7 @@ import {
 } from './EmblaCarouselArrowButtons'
 import Card from '../_components/Card'
 import { Create } from '@/app/_components/Buttons'
+import { usePathname } from 'next/navigation'
 
 type listObject = {
 	id: number
@@ -34,6 +35,8 @@ const EmblaCarousel: React.FC<propType> = (props) => {
 		onPrevButtonClick,
 		onNextButtonClick,
 	} = usePrevNextButtons(emblaApi)
+
+	const pathName = usePathname()
 
 	console.log('Img Url: ' + slides[0].agent_url)
 	return (
@@ -60,7 +63,7 @@ const EmblaCarousel: React.FC<propType> = (props) => {
 				</div>
 			</div>
 
-			<Create />
+			{pathName !== '/dashboard/roles' && <Create />}
 
 			<div className="embla__controls mb-7">
 				<div className="embla__buttons grid grid-cols-2 gap-2 items-center">

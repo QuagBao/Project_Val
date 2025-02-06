@@ -11,7 +11,7 @@ export default async function Page(props: { params: Promise<{ id: number }> }) {
 	}
 
 	return (
-		<div className="flex flex-col items-center justify-center h-screen">
+		<div className="flex flex-col items-center justify-center">
 			<BoardInfo data={data} />
 		</div>
 	)

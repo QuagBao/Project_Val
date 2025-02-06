@@ -7,15 +7,16 @@ async function seedRoles(client: VercelPoolClient) {
         CREATE TABLE IF NOT EXISTS roles (
             id SERIAL PRIMARY KEY,
             role_name VARCHAR(255) NOT NULL,
-            role_url VARCHAR(255) NOT NULL
+            role_url VARCHAR(255) NOT NULL,
+			description TEXT
         );
     `
 
 	const insertedRoles = await Promise.all(
 		roles.map(async (role) => {
 			return client.sql`
-                INSERT INTO roles (id, role_name, role_url)
-                VALUES (${role.id}, ${role.role_name}, ${role.role_url})
+                INSERT INTO roles (id, role_name, role_url, description)
+                VALUES (${role.id}, ${role.role_name}, ${role.role_url}, ${role.description})
                 ON CONFLICT (id) DO NOTHING;
             `
 		})

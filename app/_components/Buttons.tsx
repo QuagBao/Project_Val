@@ -1,4 +1,5 @@
 'use client'
+
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -35,10 +36,20 @@ export function Back({ id }: { id: number }) {
 	)
 }
 
-export function EditAgent({ id }: { id: number }) {
+export function Edit({ id }: { id: number }) {
+	const pathName = usePathname()
+	const getPathLink = () => {
+		if (pathName === `/dashboard/agents/${id}/view`)
+			return `/dashboard/agents/${id}/edit`
+		if (pathName === `/dashboard/guns/${id}/view`)
+			return `/dashboard/guns/${id}/edit`
+		if (pathName === `/dashboard/roles/${id}/view`)
+			return `/dashboard/roles/${id}/edit`
+		return '/'
+	}
 	return (
 		<Link
-			href={`/dashboard/agents/${id}/edit`}
+			href={getPathLink()}
 			className="w-[120px] flex items-center justify-center gap-2 text-slate-100 hover:bg-sky-500 hover:text-custom rounded-md border p-2"
 		>
 			<svg

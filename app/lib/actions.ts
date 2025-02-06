@@ -4,8 +4,6 @@ import { sql } from '@vercel/postgres'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
-console.log('Test env:', process.env.TEST_ENV)
-
 const FormSchema = z.object({
 	agentName: z.string({ invalid_type_error: 'Name of agent cannot be empty' }),
 	roleId: z.string({ invalid_type_error: 'Please select a role' }),
@@ -22,6 +20,16 @@ export type State = {
 	}
 	message?: string | null
 }
+
+export type STATE_ROLE = {
+	errors?: {
+		roleName?: string[]
+		description?: string[]
+		img_url?: string[]
+	}
+	message?: string | null
+}
+
 // function update agent
 export async function updateAgent(
 	id: number,
@@ -106,4 +114,50 @@ export async function createAgent(prevState: State, formData: FormData) {
 	}
 	revalidatePath('/dashboard/agents')
 	redirect('/dashboard/agents')
+}
+
+const FormSchema_Role = z.object({
+	roleName: z.string({ invalid_type_error: 'Name of role cannot be empty' }),
+	description: z.string().min(1, { message: 'Description cannot be empty.' }),
+	img_url: z.string().min(1, { message: 'Image cannot be empty.' }),
+})
+// function update role
+export async function updateRole(
+	id: number,
+	prevState: STATE_ROLE,
+	formData: FormData
+) {
+	const validatedFields = FormSchema_Role.safeParse({
+		roleName: formData.get('roleName'),
+		description: formData.get('description'),
+		img_url: formData.get('fileInput'),
+	})
+
+	if (!validatedFields.success) {
+		console.log(
+			'Validation Errors Roles: ',
+			validatedFields.error.flatten().fieldErrors
+		)
+		return {
+			errors: validatedFields.error.flatten().fieldErrors,
+			message: 'Missing Fields. Failed to Update Role.',
+		}
+	}
+	const { roleName, description } = validatedFields.data
+
+	try {
+		await sql`
+			UPDATE roles
+			SET role_name = ${roleName}, description = ${description}
+			WHERE id = ${id}
+		`
+	} catch (error) {
+		console.error('Error updating role:', error)
+		return {
+			message: 'Failed to update role',
+		}
+	}
+	console.log('Đã cập nhật role thành công')
+	revalidatePath(`/dashboard/roles/${id}/view`)
+	redirect(`/dashboard/roles/${id}/view`)
 }
