@@ -20,7 +20,7 @@ export type Role = {
 }
 
 export type Agent = {
-	id: string
+	id: number
 	role_id: string
 	gun_ids: string
 	name: string

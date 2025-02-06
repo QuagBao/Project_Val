@@ -1,7 +1,7 @@
 import { fetchDetailAgentByID, fetchRoles } from '@/app/lib/data'
 import EditForm from './EditForm'
 
-export default async function Page(props: { params: Promise<{ id: string }> }) {
+export default async function Page(props: { params: Promise<{ id: number }> }) {
 	const param = await props.params
 	const id = param.id
 	const [agentDetail, roles] = await Promise.all([

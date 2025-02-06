@@ -12,7 +12,7 @@ import Card from '../_components/Card'
 import { Create } from '@/app/_components/Buttons'
 
 type listObject = {
-	id: string
+	id: number
 	name: string
 	agent_url: string
 }
@@ -59,9 +59,9 @@ const EmblaCarousel: React.FC<propType> = (props) => {
 					))}
 				</div>
 			</div>
-			<div className="flex justify-end">
-				<Create />
-			</div>
+
+			<Create />
+
 			<div className="embla__controls mb-7">
 				<div className="embla__buttons grid grid-cols-2 gap-2 items-center">
 					<PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />

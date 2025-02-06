@@ -17,14 +17,14 @@ export async function fetchGuns(): Promise<Gun[]> {
 }
 
 export async function fetchDetailAgentByID(
-	id: string
+	id: number
 ): Promise<AgentDetail | null> {
 	try {
 		const data = await sql<AgentDetail>`
 			SELECT agents.*, roles.role_name, roles.role_url
 			FROM agents
 			JOIN roles ON agents.role_id = roles.id
-			WHERE agents.id = ${Number(id)};
+			WHERE agents.id = ${id};
 		`
 		return data.rows[0] ?? null
 	} catch (error) {

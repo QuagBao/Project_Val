@@ -2,7 +2,7 @@ import Button from '../../_components/DetailsButton'
 import Image from 'next/image'
 
 type cardProps = {
-	id: string
+	id: number
 	name: string
 	img_Url: string
 }
@@ -15,7 +15,7 @@ function Card({ id, name, img_Url }: cardProps) {
 		rounded-md flex flex-col justify-between gap-5 items-center"
 		>
 			<div className="p-2 relative">
-				<div className="relative top-24 right-[168px]">
+				<div className="relative top-24 right-[173px]">
 					<h1
 						className="text-3xl font-extrabold text-slate-100 uppercase
 				absolute top-12 tracking-wide w-full rotate-90 z-10

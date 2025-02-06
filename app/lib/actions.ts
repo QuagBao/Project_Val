@@ -7,30 +7,39 @@ import { redirect } from 'next/navigation'
 console.log('Test env:', process.env.TEST_ENV)
 
 const FormSchema = z.object({
+	agentName: z.string({ invalid_type_error: 'Name of agent cannot be empty' }),
 	roleId: z.string({ invalid_type_error: 'Please select a role' }),
 	overview: z.string().min(1, { message: 'Overview cannot be empty.' }),
 	description: z.string().min(1, { message: 'Description cannot be empty.' }),
+	img_url: z.string().min(1, { message: 'Image cannot be empty.' }),
 })
 export type State = {
 	errors?: {
 		roleId?: string[]
 		overview?: string[]
 		description?: string[]
+		img_url?: string[]
 	}
 	message?: string | null
 }
-
+// function update agent
 export async function updateAgent(
-	id: string,
+	id: number,
 	prevState: State,
 	formData: FormData
 ) {
 	const validatedFields = FormSchema.safeParse({
-		roleId: formData.get('roleId'),
-		overview: formData.get('overview'),
-		description: formData.get('description'),
+		agentName: formData.get('agentName')?.toString() || '',
+		roleId: formData.get('roleId')?.toString() || '',
+		overview: formData.get('overview')?.toString() || '',
+		description: formData.get('description')?.toString() || '',
+		img_url: formData.get('fileInput')?.toString() || '',
 	})
 	if (!validatedFields.success) {
+		console.log(
+			'Validation Errors:',
+			validatedFields.error.flatten().fieldErrors
+		)
 		return {
 			errors: validatedFields.error.flatten().fieldErrors,
 			message: 'Missing Fields. Failed to Update Agent.',
@@ -53,4 +62,48 @@ export async function updateAgent(
 	console.log('Đã cập nhật thành công')
 	revalidatePath(`/dashboard/agents/${id}/view`)
 	redirect(`/dashboard/agents/${id}/view`)
+}
+// Function create new agent
+export async function createAgent(prevState: State, formData: FormData) {
+	const pathName = formData.get('pathName') as string
+	const fileName = formData.get('fileInput') as File
+
+	// Set img_url based on the path
+	const img_url =
+		pathName === '/dashboard/agents/create' && fileName
+			? `/img/agents/${fileName.name}`
+			: fileName?.name
+	console.log('Path Name get in createAgent: ', pathName)
+	console.log('Final img_url: ', img_url)
+
+	const validatedFields = FormSchema.safeParse({
+		agentName: formData.get('agentName')?.toString() || '',
+		roleId: formData.get('roleId')?.toString() || '',
+		overview: formData.get('overview')?.toString() || '',
+		description: formData.get('description')?.toString() || '',
+		img_url,
+	})
+	if (!validatedFields.success) {
+		return {
+			errors: validatedFields.error.flatten().fieldErrors,
+			message: '❌ Missing Fields. Failed to Create Agent.',
+		}
+	}
+
+	const { agentName, roleId, overview, description } = validatedFields.data
+
+	try {
+		await sql`
+			INSERT INTO agents (name, role_id, agent_url, overview, description)
+			VALUES (${agentName}, ${roleId}, ${img_url}, ${overview}, ${description})
+		`
+		console.log('✅ Agent created successfully!') // Trả về thông báo thành công
+	} catch (error) {
+		console.error('❌ Error creating agent:', (error as Error).message)
+		return {
+			message: `❌ Failed to create agent. Error: ${(error as Error).message}`,
+		}
+	}
+	revalidatePath('/dashboard/agents')
+	redirect('/dashboard/agents')
 }

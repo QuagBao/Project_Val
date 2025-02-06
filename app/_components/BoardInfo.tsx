@@ -2,7 +2,7 @@ import { Back, DeleteAgent, EditAgent } from './Buttons'
 import Img from './Img'
 
 interface dataBoardInfo {
-	id: string
+	id: number
 	agent_url: string
 	name: string
 	role_url: string

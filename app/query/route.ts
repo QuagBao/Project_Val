@@ -1,15 +1,14 @@
-import { db } from '@vercel/postgres'
+import { db, VercelPoolClient } from '@vercel/postgres'
 
-const client = await db.connect()
-
-async function listAgents() {
+async function listAgents(client: VercelPoolClient) {
 	const data = await client.sql`SELECT * FROM agents;`
 	return data.rows
 }
 
 export async function GET() {
 	try {
-		const type_of_guns = await listAgents()
+		const client = await db.connect()
+		const type_of_guns = await listAgents(client)
 		return new Response(JSON.stringify(type_of_guns), { status: 200 })
 	} catch (error) {
 		console.error('Error fetching agents:', error)

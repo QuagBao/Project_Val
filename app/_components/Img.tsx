@@ -1,23 +1,28 @@
-/* eslint-disable @next/next/no-img-element */
-import React from 'react'
+import Image from 'next/image'
 
 interface imgProps {
 	src: string
 	alt: string
 }
 
-function Image({ src, alt }: imgProps) {
+function Img({ src, alt }: imgProps) {
 	return (
-		<div className=" rounded-xl drop-shadow-custom">
-			<img
-				className="w-full bg-slate-600 border-2 border-gray-300 rounded-xl p-2 h-[600px] 
-				object-contain
+		<div
+			className="max-w-[600px] w-[320px] h-[495px] bg-slate-700 drop-shadow-custom
+			rounded-md flex justify-center items-center"
+		>
+			<Image
+				className="  rounded-md p-2
+				w-[320px] h-full aspect-video object-contain
 				drop-shadow-custom"
 				src={src}
+				width={0}
+				height={0}
+				sizes="100vw"
 				alt={alt}
 			/>
 		</div>
 	)
 }
 
-export default Image
+export default Img

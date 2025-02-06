@@ -1,9 +1,7 @@
-import { db } from '@vercel/postgres'
+import { db, VercelPoolClient } from '@vercel/postgres'
 import { agents, roles, typeOfGuns, guns } from '../lib/placeholder-data'
 
-const client = await db.connect()
-
-async function seedRoles() {
+async function seedRoles(client: VercelPoolClient) {
 	await client.sql`DROP TABLE IF EXISTS roles CASCADE;`
 	await client.sql`
         CREATE TABLE IF NOT EXISTS roles (
@@ -26,7 +24,7 @@ async function seedRoles() {
 	return insertedRoles
 }
 
-async function seedAgents() {
+async function seedAgents(client: VercelPoolClient) {
 	await client.sql`DROP TABLE IF EXISTS agents CASCADE;`
 	await client.sql`
         CREATE TABLE IF NOT EXISTS agents (
@@ -42,9 +40,8 @@ async function seedAgents() {
 	const insertedAgents = await Promise.all(
 		agents.map(async (agent) => {
 			return client.sql`
-                INSERT INTO agents (id, name, role_id, agent_url, overview, description)
-                VALUES (${agent.id}, ${agent.name}, ${agent.role_id}, ${agent.agent_url}, ${agent.overview}, ${agent.description})
-                ON CONFLICT (id) DO NOTHING;
+                INSERT INTO agents (name, role_id, agent_url, overview, description)
+                VALUES ( ${agent.name}, ${agent.role_id}, ${agent.agent_url}, ${agent.overview}, ${agent.description})
             `
 		})
 	)
@@ -52,7 +49,7 @@ async function seedAgents() {
 	return insertedAgents
 }
 
-async function seedTypeOfGuns() {
+async function seedTypeOfGuns(client: VercelPoolClient) {
 	await client.sql`DROP TABLE IF EXISTS type_of_guns CASCADE;`
 	await client.sql`
         CREATE TABLE IF NOT EXISTS type_of_guns (
@@ -73,7 +70,7 @@ async function seedTypeOfGuns() {
 	return insertedTypeOfGuns
 }
 
-async function seedGuns() {
+async function seedGuns(client: VercelPoolClient) {
 	await client.sql`DROP TABLE IF EXISTS guns CASCADE;`
 	await client.sql`
         CREATE TABLE IF NOT EXISTS guns (
@@ -97,21 +94,27 @@ async function seedGuns() {
 }
 
 export async function GET() {
+	let client: VercelPoolClient | null = null // ✅ Khai báo ở ngoài để dùng trong mọi khối
+
 	try {
+		client = await db.connect() // ✅ Khởi tạo client ở đây
+
 		await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp";`
 		await client.sql`BEGIN;`
 
-		await seedRoles()
-		await seedAgents()
-		await seedTypeOfGuns()
-		await seedGuns()
+		await seedRoles(client)
+		await seedAgents(client)
+		await seedTypeOfGuns(client)
+		await seedGuns(client)
 
 		await client.sql`COMMIT;`
 
 		console.log('✅ Database seeded successfully')
 		return new Response('✅ Database seeded successfully', { status: 200 })
 	} catch (error) {
-		await client.sql`ROLLBACK;`
+		if (client) {
+			await client.sql`ROLLBACK;` // ✅ Chỉ rollback khi client tồn tại
+		}
 		console.error('❌ Error seeding database:', error)
 		return new Response(`❌ Error seeding database: ${error}`, {
 			status: 500,

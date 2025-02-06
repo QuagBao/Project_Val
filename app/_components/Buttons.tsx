@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-export function Back({ id }: { id: string }) {
+export function Back({ id }: { id: number }) {
 	const pathName = usePathname()
 	const getPathLink = () => {
 		if (pathName === `/dashboard/agents/${id}/view`) return '/dashboard/agents'
@@ -35,7 +35,7 @@ export function Back({ id }: { id: string }) {
 	)
 }
 
-export function EditAgent({ id }: { id: string }) {
+export function EditAgent({ id }: { id: number }) {
 	return (
 		<Link
 			href={`/dashboard/agents/${id}/edit`}
@@ -61,12 +61,13 @@ export function EditAgent({ id }: { id: string }) {
 	)
 }
 
-export function DeleteAgent({ id }: { id: string }) {
+export function DeleteAgent({ id }: { id: number }) {
 	const deleteAgentById = id
+	console.log('Agent Deleted: ', deleteAgentById)
 	return (
 		<form
 			className="w-[120px] flex items-center justify-center gap-2 text-slate-100 hover:bg-orange-400 hover:text-custom rounded-md border p-2"
-			action={deleteAgentById}
+			// action={deleteAgentById}
 		>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -88,16 +89,32 @@ export function DeleteAgent({ id }: { id: string }) {
 	)
 }
 
-export function Cancel({ id }: { id: string }) {
+export function Cancel({ id }: { id: number }) {
 	const pathName = usePathname()
 	const getPathLink = () => {
-		if (pathName === `/dashboard/agents/${id}/edit`)
-			return `/dashboard/agents/${id}/view`
-		if (pathName === `/dashboard/guns/${id}/edit`)
-			return `/dashboard/guns/${id}/view`
-		if (pathName === `/dashboard/roles/${id}/edit`)
-			return `/dashboard/roles/${id}/view`
-		return '/'
+		if (id != 0) {
+			switch (pathName) {
+				case `/dashboard/agents/${id}/edit`:
+					return `/dashboard/agents/${id}/view`
+				case `/dashboard/guns/${id}/edit`:
+					return `/dashboard/guns/${id}/view`
+				case `/dashboard/roles/${id}/edit`:
+					return `/dashboard/roles/${id}/view`
+				default:
+					return '/'
+			}
+		} else {
+			switch (pathName) {
+				case `/dashboard/agents/create`:
+					return `/dashboard/agents`
+				case `/dashboard/guns/create`:
+					return `/dashboard/guns`
+				case `/dashboard/roles/create`:
+					return `/dashboard/roles`
+				default:
+					return '/'
+			}
+		}
 	}
 
 	return (
@@ -148,10 +165,12 @@ export function Submit() {
 
 export function Create() {
 	const pathName = usePathname()
+
 	const getPathLink = () => {
-		if (pathName === `/dashboard/agents/`) return `/dashboard/agents/create`
-		if (pathName === `/dashboard/guns/`) return `/dashboard/guns/create`
-		if (pathName === `/dashboard/roles/`) return `/dashboard/roles/create`
+		console.log('PathName: ', pathName)
+		if (pathName === '/dashboard/agents') return '/dashboard/agents/create'
+		if (pathName === '/dashboard/guns') return '/dashboard/guns/create'
+		if (pathName === '/dashboard/roles') return '/dashboard/roles/create'
 		return '/'
 	}
 	return (
